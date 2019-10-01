@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="/">Back to Home</a>
+
+<h1>Edit Candy</h1>
+
+<form action="/edit/{{candy._id}}" method="POST">
+    Name of candy: <input type="text" name="name" value="{{candy.name}}"><br>
+    Price of candy: <input type="number" name="price" value="{{candy.price}}"><br>
+    Image URL: <input type="text" name="img_url" value="{{candy.img_url}}"><br>
+    <button type="submit">Submit</button><br>
+</form>
+
+{% endblock %}

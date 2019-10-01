@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="/">Back to Home</a>
+
+<h1>Candy: {{candy.name}}</h1>
+
+<img src="{{candy.img_url}}"><br>
+
+Cost: ${{candy.price}}
+
+<br><br>
+<a href="/edit/{{candy._id}}">Edit Candy</a>
+
+<br><br>
+<form action="/delete/{{candy._id}}" method="POST">
+    <button type="submit">Delete Candy</button>
+</form>
+
+{% endblock %}
