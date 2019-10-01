@@ -39,11 +39,6 @@ def show_candy(candy_id):
     candy = candies_collection.find_one({'_id': ObjectId(candy_id)})
     return render_template('show_candy.html', candy=candy)
 
-@app.route('/edit/<candy_id>', methods=['GET'])
-def edit_candy(candy_id):
-    candy = candies_collection.find_one({'_id': ObjectId(candy_id)})
-    return render_template('edit_candy.html', candy=candy)
-
 @app.route('/edit/<candy_id>', methods=['POST'])
 def update_candy(candy_id):
     """Edit page for a candy."""
@@ -57,6 +52,12 @@ def update_candy(candy_id):
         {'$set': new_candy}
     )
     return redirect(url_for('show_candy', candy_id=candy_id))
+
+@app.route('/edit/<candy_id>', methods=['GET'])
+def edit_candy(candy_id):
+    """Page to submit an edit on a candy."""
+    candy = candies_collection.find_one({'_id': ObjectId(candy_id)})
+    return render_template('edit_candy.html', candy=candy)
 
 @app.route('/delete/<candy_id>', methods=['POST'])
 def delete_candy(candy_id):
